@@ -1,38 +1,143 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
   text-align: center;
+  color: #333;
+  margin-bottom: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dashboard {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.category {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.category h2 {
+  margin: 0 0 15px;
+  color: #007bff;
+}
+
+.widget-row {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* Allow wrapping for the widgets */
+  gap: 20px; /* Add gap between widgets */
+}
+
+.widget {
+  background: #e9ecef;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(33.33% - 20px); /* Three widgets in a row */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.empty-widget {
+  background: #e9ecef; /* Match background with other widgets */
+  border: 1px dashed #ccc;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100px; /* Fixed height for empty widget */
+  flex: 1 1 calc(33.33% - 20px);
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Maintain the same width as other widgets */
+}
+
+.center-widget {
+  height: 100px; /* Set a height to keep it consistent */
+}
+
+.widge-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+button {
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal > div {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+
+.modal h2 {
+  margin: 0 0 15px;
+}
+
+.modal select,
+.modal input,
+.modal textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal button {
+  width: 48%;
+}
+
+/* New styles for charts */
+.chart-container {
+  width: 100%; /* Make the chart container take full width */
+  max-width: 600px; /* Set a max width for larger screens */
+  margin: 0 auto; /* Center the chart container */
+  padding: 10px; /* Add some padding */
+}
+
+.chart-container canvas {
+  width: 100% !important; /* Ensure the canvas takes full width */
+  height: auto !important; /* Maintain aspect ratio */
+}
+
+@media (max-width: 600px) {
+  .chart-container {
+    max-width: 100%; /* Full width on smaller screens */
   }
 }
